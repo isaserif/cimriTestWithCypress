@@ -13,23 +13,29 @@ it('Logo, başlik ve url  doğru bir şekilde görüntülendiği kontrol edilir'
     cy.step('Url adresinin "https://www.cimri.com/"" eşit oldugu verify edilir')
     cy.url().should('eq','https://www.cimri.com/')
     cy.step('cimri logosunun" görünür oldugu verify edilir')      
-    cimriHompage.cimriLogo().should('be.visible')
+    cy.get(cimriHompage.cimriLogo()).should('be.visible')
 });
 it('Hesabim bölümü görünür olmali, Mause ile üzerine gelindiginde "Kayit Ol" ve Giriş Yap" Linklerine tiklanabilme ve ilgili sayfalara gidilebilmeli', () => {
     cy.step('Hesabim Linkinin üzerine gelinir')
-    cimriHompage.hesabimLink().should('be.visible').trigger('mouseover')
+    cy.get(cimriHompage.hesabimLink()).should('be.visible').trigger('mouseover')
+    
     cy.step(' Kayit ol linkine tiklanir')
-    cimriHompage.kayitOlLink().should('be.visible').click()
+    cy.get(cimriHompage.kayitOlLink()).should('be.visible').click()
+
     cy.step('Kayit ol butonunun görünür oldugu dogrulanir')
-    cimriHompage.kayitOlButton().should('be.visible')
+    cy.get(cimriHompage.kayitOlButton()).should('be.visible')
+
     cy.step('Anasayfaya geri gelir')
     cy.go(-1)
+
     cy.step('Hesabim Linkinin üzerine gelinir')
-    cimriHompage.hesabimLink().trigger('mouseover')
+    cy.get(cimriHompage.hesabimLink()).trigger('mouseover')
+
     cy.step('Giriş Yap linkine tiklanir')
-    cimriHompage.girişYapLink().should('be.visible').click()
+    cy.get(cimriHompage.girişYapLink()).should('be.visible').click()
+
    cy.step('Giriş Yap" butonunun görünür oldugu dogrulanir')
-    cimriHompage.girisYapButton().should('be.visible')
+    cy.get(cimriHompage.girisYapButton()).should('be.visible')
 
 
 });
